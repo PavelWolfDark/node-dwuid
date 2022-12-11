@@ -1,0 +1,35 @@
+{
+  "name": "dwuid",
+  "version": "1.0.0",
+  "description": "DWUID — universally unique lexicographic human-friendly decentralized identifier.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/commonjs/index.js"
+    }
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/types/index.d.ts",
+  "scripts": {
+    "build:esm": "npx tsc -m esnext --outDir dist/esm",
+    "build:commonjs": "npx tsc -m commonjs --outDir dist/commonjs",
+    "build:types": "npx tsc -d --emitDeclarationOnly --outDir dist/types",
+    "build": "npm run build:esm && npm run build:commonjs && npm run build:types",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://gitlab.darkwolf.cloud/cyberviking/node-dwuid"
+  },
+  "keywords": [
+    "dwuid"
+  ],
+  "author": "Pavel Wolf <cyberviking@darkwolf.team>",
+  "license": "GPL-3.0",
+  "devDependencies": {
+    "@types/node": "^18.11.12",
+    "typescript": "^4.9.4"
+  }
+}
