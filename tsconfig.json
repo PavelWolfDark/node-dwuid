@@ -1,6 +1,6 @@
 {
-    "compilerOptions": {
-        "target": "ESNext",
-        "rootDir": "src"
-    }
+  "compilerOptions": {
+    "target": "ESNext"
+  },
+  "include": ["src/**/*"]
 }

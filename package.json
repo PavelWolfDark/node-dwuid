@@ -7,21 +7,21 @@
     ".": {
       "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.js",
-      "require": "./dist/commonjs/index.js"
+      "require": "./dist/cjs/index.cjs"
     }
   },
-  "main": "./dist/commonjs/index.js",
-  "types": "./dist/types/index.d.ts",
+  "main": "dist/cjs/index.cjs",
+  "types": "dist/types/index.d.ts",
   "scripts": {
-    "build:esm": "npx tsc -m esnext --outDir dist/esm",
-    "build:commonjs": "npx tsc -m commonjs --outDir dist/commonjs",
-    "build:types": "npx tsc -d --emitDeclarationOnly --outDir dist/types",
-    "build": "npm run build:esm && npm run build:commonjs && npm run build:types",
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types",
+    "build:cjs": "npx tsc -p config/tsconfig.cjs.json",
+    "build:esm": "npx tsc -p config/tsconfig.esm.json",
+    "build:types": "npx tsc -p config/tsconfig.types.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.darkwolf.cloud/cyberviking/node-dwuid"
+    "url": "https://github.com/PavelWolfDark/node-dwuid"
   },
   "keywords": [
     "dwuid"
