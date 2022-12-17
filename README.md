@@ -12,45 +12,49 @@ import {
   Uid,
   TimestampUid,
   RandomUid,
+  GeohashUid,
   TimestampUidGenerator,
-  RandomUidGenerator,
+  RandomUidGenerator
 } from 'dwuid';
 
-Uid.timestamp().toString(); // => 4arZkrd5dFjDAxGo2EcMM
-Uid.parse('4arZkrd5dFjDAxGo2EcMM'); // => TimestampUid
+console.log(`${Uid.timestamp()}`); // => 4arZkrd5dFjDAxGo2EcMM
+console.log(`${Uid.parse(
+    '4arZkrd5dFjDAxGo2EcMM')}`); // => TimestampUid(4arZkrd5dFjDAxGo2EcMM)
 
-Uid.random().toString(); // => 5LsB98o4MByiNMWV8cxni
-Uid.parse('5LsB98o4MByiNMWV8cxni'); // => RandomUid
+console.log(`${Uid.random()}`); // => 5LsB98o4MByiNMWV8cxni
+console.log(`${Uid.parse(
+    '5LsB98o4MByiNMWV8cxni')}`); // => RandomUid(5LsB98o4MByiNMWV8cxni)
 
-TimestampUid.now().toString(); // => Jbbq9G615
-TimestampUid.parse('Jbbq9G615'); // => TimestampUid
-TimestampUid.tryParse('Jbbq9G615'); // => TimestampUid
-RandomUid.parse('Jbbq9G615'); // throws RangeError
-RandomUid.tryParse('Jbbq9G615'); // => null
+console.log(`${Uid.geohash(0.123456, 0.123456)}`); // => 2oHjQuePNCD
+console.log(`${Uid.parse('2oHjQuePNCD')}`); // => GeohashUid(2oHjQuePNCD)
+
+console.log(`${TimestampUid.now()}`); // => Jbbq9G615
+console.log(`${TimestampUid.parse('Jbbq9G615')}`); // => Jbbq9G615
+console.log(`${TimestampUid.tryParse('Jbbq9G615')}`); // => Jbbq9G615
+// console.log(`${RandomUid.parse('Jbbq9G615')}`); // throws RangeError
+console.log(`${RandomUid.tryParse('Jbbq9G615')}`); // => null
+
+console.log(`${GeohashUid.fromCoordinates(-45.123456, -90.123456)}`); // => 2gctpGXKR4c
+console.log(`${GeohashUid.fromCoordinates(45.123456, 90.123456)}`); // => 2q7EUgg3MZF
+console.log(`${GeohashUid.parse('2gctpGXKR4c')
+    .toLocation()}`); // => Location(-45.123456, -90.123456)
+console.log(`${GeohashUid.parse('2q7EUgg3MZF')
+    .toLocation()}`); // => Location(45.123456, 90.123456)
 
 const timestampUidGenerator = new TimestampUidGenerator();
-timestampUidGenerator.next().toString(); // => 4arZkrd5gj9ndREUza23a
-timestampUidGenerator.next().toString(); // => 4arZkrd5gv5Gan2fDe7w3
-timestampUidGenerator.next().toString(); // => 4arZkrd5gv5Gan2fDe7w4
-timestampUidGenerator.next().toString(); // => 4arZkrd5h8pqZmCarCpyb
-timestampUidGenerator.next().toString(); // => 4arZkrd5h8pqZmCarCpyc
+console.log(`${timestampUidGenerator.next()}`); // => 4arZkrd5gj9ndREUza23a
+console.log(`${timestampUidGenerator.next()}`); // => 4arZkrd5gv5Gan2fDe7w3
+console.log(`${timestampUidGenerator.next()}`); // => 4arZkrd5gv5Gan2fDe7w4
+console.log(`${timestampUidGenerator.next()}`); // => 4arZkrd5h8pqZmCarCpyb
+console.log(`${timestampUidGenerator.next()}`); // => 4arZkrd5h8pqZmCarCpyc
 
 const randomUidGenerator = new RandomUidGenerator();
-const secureRandomUidGenerator = new RandomUidGenerator({
-  secureRandom: true
-});
-randomUidGenerator.next().toString(); // => 56cuNWELu2ZEqeo7QCfLn
-randomUidGenerator.next().toString(); // => 5Td5b6CEySZJGFZ6CA2iW
-randomUidGenerator.next().toString(); // => 59zXzHMpg1QRb57zJVGsQ
-randomUidGenerator.next().toString(); // => 5EraHXGw21VpRhWTUYoCa
-randomUidGenerator.next().toString(); // => 5StxyheEN6wDoM3pfsBEP
-
-const shortCodeGenerator = new RandomUidGenerator({
-  bits: 32
-});
-shortCodeGenerator.next().toString(); // => 4w3jVu
-shortCodeGenerator.next().toString(); // => 4gkbgq
-shortCodeGenerator.next().toString(); // => 54pVyr
-shortCodeGenerator.next().toString(); // => 4xKnyc
-shortCodeGenerator.next().toString(); // => 4wyANi
+// const secureRandomUidGenerator = new RandomUidGenerator({
+//   secureRandom: true
+// });
+console.log(`${randomUidGenerator.next()}`); // => 56cuNWELu2ZEqeo7QCfLn
+console.log(`${randomUidGenerator.next()}`); // => 5Td5b6CEySZJGFZ6CA2iW
+console.log(`${randomUidGenerator.next()}`); // => 59zXzHMpg1QRb57zJVGsQ
+console.log(`${randomUidGenerator.next()}`); // => 5EraHXGw21VpRhWTUYoCa
+console.log(`${randomUidGenerator.next()}`); // => 5StxyheEN6wDoM3pfsBEP
 ```

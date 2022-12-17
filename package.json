@@ -1,6 +1,6 @@
 {
   "name": "dwuid",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "DWUID — universally unique lexicographic human-friendly decentralized identifier.",
   "type": "module",
   "exports": {
@@ -24,7 +24,11 @@
     "url": "https://github.com/PavelWolfDark/node-dwuid"
   },
   "keywords": [
-    "dwuid"
+    "dwuid",
+    "uid",
+    "timestamp",
+    "random",
+    "geohash"
   ],
   "author": "Pavel Wolf <cyberviking@darkwolf.team>",
   "license": "GPL-3.0",
